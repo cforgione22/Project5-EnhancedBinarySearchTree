@@ -7,7 +7,7 @@ package org.example;
  */
 public class BinarySearchTree
 {
-    private Node root;
+    protected Node root;
 
     /**
      Constructs an empty tree.
@@ -146,6 +146,7 @@ public class BinarySearchTree
      Prints a node and all of its descendants in sorted order.
      @param parent the root of the subtree to print
      */
+
     private static void print(Node parent)
     {
         if (parent == null) { return; }
@@ -153,6 +154,7 @@ public class BinarySearchTree
         System.out.print(parent.data + " ");
         print(parent.right);
     }
+
 
     /**
      A node of a tree stores a data item and references
