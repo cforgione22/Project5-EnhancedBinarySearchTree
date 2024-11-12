@@ -155,7 +155,6 @@ public class BinarySearchTree
         print(parent.right);
     }
 
-
     /**
      A node of a tree stores a data item and references
      to the left and right child nodes.

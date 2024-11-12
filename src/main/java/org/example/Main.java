@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         UserInterface userInterface = new UserInterface();
 //        userInterface.go();
-//        userInterface.menu();
-        userInterface.firstOption();
+        userInterface.menu();
+       //userInterface.firstOption();
     }
 }

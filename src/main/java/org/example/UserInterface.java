@@ -7,68 +7,80 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UserInterface {
 
-    public void go() {}
-
-    public int menu() {
-        Scanner scanner = new Scanner(System.in);
-//        int option = -1;
-        System.out.println("Welcome to Enhanced BST Tester.\n");
-        System.out.println("Here's the menu of choices - ");
-        System.out.println("0) Quit");
-        System.out.println("1) Build BST from a text file");
-        System.out.println("2) Print the tree");
-        System.out.println("3) Add data");
-        System.out.println("4) Remove data");
-        System.out.println("5) Show tree height");
-        System.out.println("6) Show internal path length");
-        System.out.println("7) Count absent children");
-        System.out.println("8) Find a path sum");
-        System.out.println("9) Export a BST to a text file");
-        System.out.println("Enter your choice: ");
-        int option = scanner.nextInt();
-        switch (option) {
-            case 0:
-                System.exit(0);
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            default:
-        }
-        return option;
+    public void go() {
     }
 
+
+    public void menu() throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        int option = -1;
+
+        EnhancedBST intTree = new EnhancedBST();
+
+        System.out.println("Welcome to Enhanced BST Tester.");
+        do {
+            System.out.println("\n\nHere's the menu of choices - ");
+            System.out.println("0) Quit");
+            System.out.println("1) Build BST from a text file");
+            System.out.println("2) Print the tree");
+            System.out.println("3) Add data");
+            System.out.println("4) Remove data");
+            System.out.println("5) Show tree height");
+            System.out.println("6) Show internal path length");
+            System.out.println("7) Count absent children");
+            System.out.println("8) Find a path sum");
+            System.out.println("9) Export a BST to a text file");
+            System.out.print("Enter your choice: ");
+            option = scanner.nextInt();
+            System.out.println();
+            switch (option) {
+                case 0:
+                    System.exit(0);
+                    break;
+                case 1:
+                    firstOption(intTree);
+                    break;
+                case 2:
+                    intTree.print();
+                    break;
+                case 3:
+                    addNumber(intTree);
+                    break;
+                case 4:
+                    removeNumber(intTree);
+                    break;
+                case 5:
+                    System.out.println("The height of the tree is: " +  intTree.treeHeight(intTree.root));
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+                    intTree.printLeafCount();
+                    break;
+                case 8:
+                    intTree.printSum()break;
+                case 9:
+                    break;
+                default:
+
+            }
+        }  while(option < 11);
+    }
 
     /**
      * asks user for input/gets user input/gets file
      * @throws FileNotFoundException
      */
-
-    public void firstOption() throws FileNotFoundException {
-        EnhancedBST intTree = new EnhancedBST();
-
-        System.out.println("Please insert a text file name that contains integers.");
+    public void firstOption(EnhancedBST intTree) throws FileNotFoundException {
+        System.out.print("Please insert a text file name that contains integers. ");
         Scanner keyboard = new Scanner(System.in);
-        //try catch - so there isn't an error of user types in wrong file name
+        //try catch - so there isn't an error if user types in wrong file name
         //file could be null
         File file = null;
         try {
@@ -79,9 +91,9 @@ public class UserInterface {
                     Scanner inputFile = new Scanner(file);
                     while (inputFile.hasNext()) {
                         int num = inputFile.nextInt();
+
                         intTree.add(num);
                     }
-                    intTree.print();
                 }
                 if (file == null || !file.exists()) {
                     System.out.println("No file with that name exists.");
@@ -92,8 +104,22 @@ public class UserInterface {
         }
     }
 
+    public void addNumber(EnhancedBST intTree)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type a number that you would like added to the Binary Search Tree: ");
+        int newNum = scanner.nextInt();
+        intTree.add(newNum);
+        intTree.print();
+    }
+
+    public void removeNumber(EnhancedBST intTree)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type a number that you would like removed from the Binary Search Tree: ");
+        int oldNum = scanner.nextInt();
+        intTree.remove(oldNum);
+        intTree.print();
+    }
+
 }
-
-
-//Option 1:
-//and add them to the tree.
