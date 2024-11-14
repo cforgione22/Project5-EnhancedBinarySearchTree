@@ -101,7 +101,7 @@ public class EnhancedBST extends BinarySearchTree {
         }
 
         if (correct) {
-            System.out.println(" Your guess is true.");
+            System.out.println("Your guess is true.");
         } else {
             System.out.println("Your guess is false.");
         }
