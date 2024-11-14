@@ -64,7 +64,7 @@ public class UserInterface {
                     intTree.printLeafCount();
                     break;
                 case 8:
-                    intTree.printSum()break;
+                    intTree.printSum();
                 case 9:
                     break;
                 default:

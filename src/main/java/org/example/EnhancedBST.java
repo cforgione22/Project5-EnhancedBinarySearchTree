@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class EnhancedBST extends BinarySearchTree {
@@ -64,7 +67,6 @@ public class EnhancedBST extends BinarySearchTree {
 
     public void internalPathLength() {
 
-
     }
 
 
@@ -85,28 +87,50 @@ public class EnhancedBST extends BinarySearchTree {
     }
 
     public void printSum() {
-
-        System.out.println("The sum is " + sumEqualToUser(root));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is a path sum?");
+        int userSum = scanner.nextInt();
+        List<Integer> pathSums = sumEqualToUser(root);
+        Arrays.toString(pathSums.toArray());
     }
 
-    public int sumEqualToUser(Node node) {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("What is the path sum on either the left or right side of the tree?");
-//        int userSum = scanner.nextInt();
-
-        if (node == null) { l.;
-            return 0;
-        }``````
-        if (node.left == null) {
-            return 1;
-        }
-        if (node.right == null) {
-            return 1;
+    public List<Integer> sumEqualToUser(Node node) {
+        if (node == null) {
+            return null;
         }
 
-        return sumEqualToUser(node.left) + sumEqualToUser(node.right);
+        if (node.left == null && node.right == null) {
+            int nodeValue = Integer.valueOf(node.data.toString());
+            List<Integer> nodeList = new ArrayList<>();
+            nodeList.add(nodeValue);
+            return nodeList;
+        }
 
+        List<Integer> leftList = sumEqualToUser(node.left); // [0]
+        List<Integer> rightList = sumEqualToUser(node.right); // [80]
+
+        if (leftList != null & rightList != null) {
+            leftList.addAll(rightList);
+        }
+
+        for (int i = 0; i < leftList.size(); i++) {
+            int num = leftList.get(i);
+            int nodeValue = Integer.valueOf(node.data.toString());
+            int sum = num + nodeValue;
+            leftList.add(i, sum);
+        }
+
+        return leftList; // [80, 130]
+
+//        for (int num: leftList) {
+//
+//        }
+
+
+//        int returnVal = leftList + rightList + Integer.valueOf(node.data.toString());
+//        return returnVal;
     }
+
 }
 //
 //    public void rebuildTree () {
